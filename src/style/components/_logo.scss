@@ -1,0 +1,26 @@
+@import "../mixins.scss";
+@import "../variables.scss";
+
+.logo {
+  display: block;
+  width: 1.5rem;
+  margin: 0 0.5rem;
+  height: 1.7rem;
+  @include flexbox(row, center, space-between);
+
+  span {
+    height: 100%;
+    width: 0.4rem;
+    border-radius: 0.2rem;
+    transform: rotate(15deg);
+    background-color: $purple;
+
+    &:nth-child(2) {
+      opacity: 0.6;
+    }
+
+    &:nth-child(3) {
+      opacity: 0.4;
+    }
+  }
+}

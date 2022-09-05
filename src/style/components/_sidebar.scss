@@ -1,0 +1,213 @@
+@import "../variables.scss";
+@import "../mixins.scss";
+
+.sidebar {
+  min-height: 100vh;
+  border-right: 1px solid $grey;
+  @include flexbox(column, center, flex-start);
+  width: 100%;
+  padding: 1.5rem 1rem;
+  @include transition;
+
+  &__logo {
+    @include flexbox(row, center, flex-start);
+    width: 100%;
+  }
+}
+// general settings for sidebar states
+.opened {
+  text-align: left;
+  width: 100vw;
+  @media screen and (min-width: $tablet) {
+    width: 20rem;
+  }
+}
+
+.closed {
+  text-align: center;
+  width: 6rem;
+
+  .sidebar__logo {
+    justify-content: center;
+  }
+}
+
+.state__closed {
+  display: none;
+}
+
+.sidebar__dark {
+  background-color: $darkBgSecondary;
+}
+
+.sidebar__light {
+  background-color: $lightBgSecondary;
+}
+
+// sidebar boards
+
+.sidebar__boards {
+  @include flexbox(column, center, flex-start);
+  padding: 1.5rem 0;
+  height: auto;
+  flex: 1;
+  width: 100%;
+
+  p {
+    color: $grey;
+    font-size: 0.8rem;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+}
+
+.sidebar__boards a {
+  width: 100%;
+  text-decoration: none;
+}
+
+.sidebar__board {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin: 0.5rem 0;
+  padding: 0.5rem 0;
+
+  legend {
+    padding: 0 0.5rem;
+    z-index: 1;
+  }
+
+  i {
+    font-size: 1.1rem;
+    z-index: 1;
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    background-color: $purple;
+    height: 100%;
+    width: 0%;
+    left: -1rem;
+    z-index: 0;
+    border-radius: 0 1rem 1rem 0;
+    @include transition;
+  }
+
+  &:hover::before {
+    width: calc(100% + 1rem);
+  }
+
+  &:hover {
+    i,
+    legend {
+      color: $darkTextPrimary !important;
+    }
+  }
+}
+
+// board states
+.board_opened {
+  justify-content: flex-start;
+}
+
+.board__closed {
+  justify-content: center;
+
+  &::after {
+    position: fixed;
+    content: attr(data-name);
+    width: 10rem;
+    text-align: left;
+    padding: 0.5rem 0.5rem;
+    left: 7rem;
+    font-size: 0.8rem;
+    background-color: $purple;
+    color: $darkTextPrimary;
+    border-radius: 1rem;
+    display: none;
+  }
+
+  &:hover::after {
+    display: block;
+  }
+}
+
+// create new board button
+#createNewBoardBtn {
+  i,
+  legend {
+    color: $purple;
+  }
+}
+
+// theme change holder
+.sidebar__themeHandler {
+  @include flexbox(row, center, center);
+  width: 100%;
+  padding: 0.5rem 0;
+  margin-top: 1rem;
+  border-radius: 0.5rem;
+
+  i {
+    margin: 0 1rem;
+  }
+}
+
+.themeHandler__light {
+  background-color: $lightBgPrimary;
+}
+
+.themeHandler__dark {
+  background-color: $darkBgPrimary;
+}
+
+// theme change handler
+
+.themeSwitcher {
+  position: relative;
+  width: 3rem;
+  height: 1.5rem;
+  // margin: 0 1rem;
+  border-radius: 1rem;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+
+  span {
+    position: absolute;
+    height: 1.3rem;
+    width: 1.3rem;
+    background-color: $grey;
+    border-radius: 50%;
+  }
+}
+
+.theme__light {
+  border: 1px solid $grey;
+  span {
+    left: 2px;
+  }
+}
+
+.theme__dark {
+  background-color: $purple;
+  border: 1px solid $purple;
+
+  span {
+    right: 2px;
+    background-color: $lightBgSecondary;
+  }
+}
+
+// hide sidebar button
+#hideSidebarBtn {
+  i,
+  legend {
+    font-size: 0.8rem;
+    color: $grey;
+  }
+}

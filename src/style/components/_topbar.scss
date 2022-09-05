@@ -1,0 +1,54 @@
+@import "../mixins.scss";
+@import "../variables.scss";
+
+.topbar {
+  width: 100%;
+  border-bottom: 1px solid $grey;
+  padding: 1.5rem;
+  @include flexbox(column, center, center);
+
+  @media screen and (min-width: $tablet) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.topbar__light {
+  background-color: $lightBgSecondary;
+}
+// .tobar__light {
+//   background-color: $lightBgSecondary;
+// }
+
+.topbar__dark {
+  background-color: $darkBgSecondary;
+}
+
+.topbar__buttons {
+  margin: 1rem 0;
+  @include flexbox(row, center, center);
+  @media screen and (min-width: $tablet) {
+    margin: 0;
+  }
+  button {
+    border: none;
+    cursor: pointer;
+  }
+}
+
+.topbar__purpleBtn {
+  margin-right: 1rem;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: $darkTextPrimary;
+  background-color: $purple;
+  padding: 1rem 2.5rem;
+  border-radius: 2rem;
+}
+
+.topbar__dotsBtn {
+  background-color: transparent;
+  i {
+    font-size: 1.5rem;
+    color: $grey;
+  }
+}
