@@ -50,7 +50,7 @@ const NewTask = ({ singleBoard, addNewTaskHandler }) => {
 
   const submitTask = (e) => {
     e.preventDefault();
-    if (taskValues.status) {
+    if (taskValues.status && taskValues.subtasks) {
       const id = boards.findIndex((board) => board.id === singleBoard.id);
       const newState = [...boards];
       let newTasks = newState[id].tasks;
